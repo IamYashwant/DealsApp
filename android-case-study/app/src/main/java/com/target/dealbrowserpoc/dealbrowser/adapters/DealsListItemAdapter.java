@@ -43,23 +43,25 @@ public class DealsListItemAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ProductItemViewHolder) holder).setViewModel(new ProductItemViewModel(productList.get(position)),productItemClickListener);
+        ProductItemViewModel productItemViewModel = new ProductItemViewModel();
+        productItemViewModel.setProduct(productList.get(position));
+        ((ProductItemViewHolder) holder).setViewModel(productItemViewModel, productItemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        if(productList == null)
+        if (productList == null)
             return 0;
         else
             return productList.size();
     }
 
-    public void setProductList(List<Product> productList){
+    public void setProductList(List<Product> productList) {
         this.productList = productList;
         notifyDataSetChanged();
     }
 
-    public void setProductItemClickListener(ProductItemView.Listener listener){
+    public void setProductItemClickListener(ProductItemView.Listener listener) {
         productItemClickListener = listener;
     }
 }

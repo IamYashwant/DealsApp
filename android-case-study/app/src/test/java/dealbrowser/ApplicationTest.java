@@ -1,4 +1,4 @@
-package com.target.dealbrowserpoc.dealbrowser;
+package dealbrowser;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

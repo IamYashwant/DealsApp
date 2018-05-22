@@ -1,5 +1,7 @@
 package com.target.dealbrowserpoc.dealbrowser.viewModels;
 
+import android.arch.lifecycle.MutableLiveData;
+
 import com.target.dealbrowserpoc.dealbrowser.entities.deals.Product;
 
 /**
@@ -7,13 +9,13 @@ import com.target.dealbrowserpoc.dealbrowser.entities.deals.Product;
  */
 
 public class ProductItemViewModel {
-    private Product product;
+    private MutableLiveData<Product> product = new MutableLiveData<>();
 
-    public ProductItemViewModel(Product product) {
-        this.product = product;
+    public void setProduct(Product product) {
+        this.product.setValue(product);
     }
 
-    public Product getProduct() {
+    public MutableLiveData<Product> getProduct() {
         return product;
     }
 }

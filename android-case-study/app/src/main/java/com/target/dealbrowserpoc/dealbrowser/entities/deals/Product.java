@@ -37,7 +37,7 @@ public class Product implements Parcelable {
     @Expose
     private String title;
 
-    protected Product(Parcel in) {
+    public Product(Parcel in) {
         id = in.readString();
         aisle = in.readString();
         description = in.readString();

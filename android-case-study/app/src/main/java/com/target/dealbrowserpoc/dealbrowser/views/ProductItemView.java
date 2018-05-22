@@ -62,17 +62,19 @@ public class ProductItemView extends RelativeLayout {
     }
 
     public void setData() {
-        Picasso.with(getContext())
-                .load(productItemViewModel.getProduct().getImage())
-                .placeholder(getResources().getDrawable(R.drawable.img_loading))
-                .into(productImageView);
-        productTextView.setText(productItemViewModel.getProduct().getTitle());
-        priceTextView.setText(productItemViewModel.getProduct().getSalePrice() == null ? productItemViewModel.getProduct().getPrice() : productItemViewModel.getProduct().getSalePrice());
-        productAile.setText(productItemViewModel.getProduct().getAisle());
+        productItemViewModel.getProduct().observeForever(product -> {
+            Picasso.with(getContext())
+                    .load(product.getImage())
+                    .placeholder(getResources().getDrawable(R.drawable.img_loading))
+                    .into(productImageView);
+            productTextView.setText(product.getTitle());
+            priceTextView.setText(product.getSalePrice() == null ? product.getPrice() : product.getSalePrice());
+            productAile.setText(product.getAisle());
+        });
         layoutProduct.setOnClickListener(v -> listener.actionPerformed(productItemViewModel));
     }
 
-    public void setProductItemClickListener(Listener productItemClickListener){
+    public void setProductItemClickListener(Listener productItemClickListener) {
         this.listener = productItemClickListener;
     }
 }

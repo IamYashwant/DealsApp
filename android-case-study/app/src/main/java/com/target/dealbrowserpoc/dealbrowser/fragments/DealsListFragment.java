@@ -14,11 +14,15 @@ import android.widget.ProgressBar;
 
 import com.target.dealbrowserpoc.dealbrowser.adapters.DealsListItemAdapter;
 import com.target.dealbrowserpoc.dealbrowser.activities.ProductDetailActivity;
+import com.target.dealbrowserpoc.dealbrowser.entities.deals.Product;
+import com.target.dealbrowserpoc.dealbrowser.utils.ListUtils;
 import com.target.dealbrowserpoc.dealbrowser.viewModels.ProductItemViewModel;
 import com.target.dealbrowserpoc.dealbrowser.R;
 import com.target.dealbrowserpoc.dealbrowser.application.DealApplication;
 import com.target.dealbrowserpoc.dealbrowser.entities.deals.RealDeal;
 import com.target.dealbrowserpoc.dealbrowser.services.DealsService;
+
+import java.util.Comparator;
 
 import javax.inject.Inject;
 
@@ -83,7 +87,12 @@ public class DealsListFragment extends Fragment {
         realDealCall.enqueue(new Callback<RealDeal>() {
             @Override
             public void onResponse(Call<RealDeal> call, Response<RealDeal> response) {
-                dealsListItemAdapter.setProductList(response.body().getData());
+                dealsListItemAdapter.setProductList(ListUtils.sort(response.body().getData(), new Comparator<Product>() {
+                    @Override
+                    public int compare(Product product, Product t1) {
+                        return product.getPrice().compareTo(t1.getPrice());
+                    }
+                }));
                 productContainerRecyclerView.setAdapter(dealsListItemAdapter);
                 progressBar.setVisibility(View.GONE);
             }
@@ -97,7 +106,7 @@ public class DealsListFragment extends Fragment {
 
     private void openProductDetails(ProductItemViewModel productItemViewModel) {
         Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
-        intent.putExtra("Product", productItemViewModel.getProduct());
+        intent.putExtra("Product", productItemViewModel.getProduct().getValue());
         startActivity(intent);
     }
 }
