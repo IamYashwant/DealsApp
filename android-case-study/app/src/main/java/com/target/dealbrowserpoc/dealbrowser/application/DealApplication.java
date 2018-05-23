@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.target.dealbrowserpoc.dealbrowser.component.DaggerDealApplicationComponent;
 import com.target.dealbrowserpoc.dealbrowser.component.DealApplicationComponent;
+import com.target.dealbrowserpoc.dealbrowser.modules.ContextModule;
 
 /**
  * Created by yashwantsingh on 21/05/18.
@@ -22,6 +23,7 @@ public class DealApplication extends Application {
         super.onCreate();
 
         dealApplicationComponent = DaggerDealApplicationComponent.builder()
+                .contextModule(new ContextModule(this))
                 .build();
     }
 

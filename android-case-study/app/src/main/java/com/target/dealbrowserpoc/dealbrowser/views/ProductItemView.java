@@ -21,9 +21,6 @@ public class ProductItemView extends RelativeLayout {
 
     public interface Listener {
         void actionPerformed(ProductItemViewModel productItemViewModel);
-
-        ProductItemView.Listener NoOp = (vcm) -> {
-        };
     }
 
     ProductItemViewModel productItemViewModel;

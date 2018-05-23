@@ -1,6 +1,7 @@
 package com.target.dealbrowserpoc.dealbrowser.component;
 
 import com.target.dealbrowserpoc.dealbrowser.fragments.DealsListFragment;
+import com.target.dealbrowserpoc.dealbrowser.modules.ContextModule;
 import com.target.dealbrowserpoc.dealbrowser.modules.DealsModule;
 import com.target.dealbrowserpoc.dealbrowser.modules.NetworkModule;
 
