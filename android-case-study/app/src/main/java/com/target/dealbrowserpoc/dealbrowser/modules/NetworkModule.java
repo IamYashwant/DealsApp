@@ -46,12 +46,4 @@ public class NetworkModule {
         return gsonBuilder.create();
     }
 
-    @Provides
-    public Retrofit createRetrofitService(Gson gson, OkHttpClient okHttpClient) {
-        return new Retrofit.Builder()
-                .baseUrl("http://target-deals.herokuapp.com/")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-    }
 }
