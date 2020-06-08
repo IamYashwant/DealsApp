@@ -60,7 +60,7 @@ public class ProductItemView extends RelativeLayout {
 
     public void setData() {
         productItemViewModel.getProduct().observeForever(product -> {
-            Picasso.with(getContext())
+            Picasso.get()
                     .load(product.getImage())
                     .placeholder(getResources().getDrawable(R.drawable.img_loading))
                     .into(productImageView);

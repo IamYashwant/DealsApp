@@ -44,7 +44,7 @@ public class ProductDetailActivity extends Activity {
     }
 
     private void setData(Product productDetail) {
-        Picasso.with(getApplicationContext())
+        Picasso.get()
                 .load(productDetail.getImage())
                 .placeholder(getResources().getDrawable(R.drawable.img_loading))
                 .into(imageProduct);

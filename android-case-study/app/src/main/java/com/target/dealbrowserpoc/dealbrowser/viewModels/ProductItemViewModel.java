@@ -1,6 +1,6 @@
 package com.target.dealbrowserpoc.dealbrowser.viewModels;
 
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.target.dealbrowserpoc.dealbrowser.entities.deals.Product;
 
